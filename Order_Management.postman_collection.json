@@ -1,0 +1,344 @@
+{
+	"info": {
+		"_postman_id": "cbe08ad3-e93b-4861-a985-365a9a085c6b",
+		"name": "Order_Management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Customer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Kiran",
+							"type": "default"
+						},
+						{
+							"key": "email",
+							"value": "kiranakshay2598@gmail.com",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/customers/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"customers",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Customer Detail",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{key}}",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/customers-detail/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"customers-detail",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Customer Detail",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{key}}",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "kiran Akshay",
+							"type": "default"
+						},
+						{
+							"key": "email",
+							"value": "kiranakshay2598@gmail.com",
+							"type": "default"
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "default",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/customers-detail/1/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"customers-detail",
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Customer",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{key}}",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/customers-detail/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"customers-detail",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Product",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{key}}",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Mango Milkshake",
+							"type": "default"
+						},
+						{
+							"key": "price",
+							"value": "80",
+							"type": "default"
+						},
+						{
+							"key": "stock_quantity",
+							"value": "10",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/products/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"products",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Product",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{key}}",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/products-detail/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"products-detail",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Order",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{key}}",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"customer\": 1, \n    \"products\": [\n        {\"product\": 1, \"quantity\": 2},\n        {\"product\": 1, \"quantity\": 2}\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/orders/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"orders",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Order",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{key}}",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/orders-detail/24",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"orders-detail",
+						"24"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "key",
+			"value": "token cd621ce7a2d32f6aefc33371fbf7ad579bae0f4f",
+			"type": "default"
+		}
+	]
+}
