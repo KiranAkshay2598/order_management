@@ -12,4 +12,4 @@
 
 7.Run the server using the command python manage.py runserver
 
-8.Consume the API's with postman using the Post man collection file ----> 
+8.Consume the API's with postman using the Post man collection file ----> Order_Management.postman_collection.json
