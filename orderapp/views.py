@@ -45,6 +45,8 @@ class CustomerDetailView(APIView):
 
 
 class ProductCreateView(APIView):
+    permission_classes = [IsAuthenticated]
+
     def post(self, request):
         response, http_status = create_product(request.data)
         return Response(response, status=http_status)

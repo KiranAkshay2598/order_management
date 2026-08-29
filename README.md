@@ -94,7 +94,7 @@ The API will be available at `http://127.0.0.1:8000/`.
 | `GET` | `/api/v1/customers-detail/<id>/` | View customer profile | Yes |
 | `PUT` | `/api/v1/customers-detail/<id>/` | Update customer profile | Yes |
 | `DELETE` | `/api/v1/customers-detail/<id>/` | Remove customer account | Yes |
-| `POST` | `/api/v1/products/` | Create a new product entry | No |
+| `POST` | `/api/v1/products/` | Create a new product entry | Yes |
 | `GET` | `/api/v1/products-detail/<id>/` | View product details | Yes |
 | `POST` | `/api/v1/orders/` | Place a new order with items | Yes |
 | `GET` | `/api/v1/orders-detail/<id>/` | View order details and total price | Yes |
