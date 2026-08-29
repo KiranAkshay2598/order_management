@@ -1,6 +1,6 @@
 # Order Management API
 
-A clean, production-ready Django REST Framework backend application designed for customer management, product inventory tracking, and order placement with automatic stock quantity validation. Originally built as a core backend practice application when preparing for senior backend interviews in early 2024, demonstrating solid architectural patterns, RESTful API design, and clean code standards.
+A clean Django REST Framework backend application designed for customer management, product inventory tracking, and order placement with automatic stock quantity validation. Originally built as an interview project in 2024 when planning to switch jobs, demonstrating core Django concepts, RESTful API design, and clean code standards.
 
 ---
 

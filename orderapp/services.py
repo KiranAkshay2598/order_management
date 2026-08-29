@@ -92,7 +92,7 @@ def remove_customer(customer_id):
             "message": 'This Customer has been removed from the Database Successfully'
         }
         status = 'success'
-        status_code = 204
+        status_code = 200
 
     response = build_response(status, return_data)
     return response, status_code
