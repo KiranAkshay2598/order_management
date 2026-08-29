@@ -337,7 +337,7 @@
 	"variable": [
 		{
 			"key": "key",
-			"value": "token cd621ce7a2d32f6aefc33371fbf7ad579bae0f4f",
+			"value": "Token {{token}}",
 			"type": "default"
 		}
 	]

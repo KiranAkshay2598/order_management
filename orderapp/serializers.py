@@ -43,8 +43,12 @@ class OrderSerializer(serializers.ModelSerializer):
             quantity = item_data['quantity']
             product_instance = Product.objects.get(id=product.id)
             if product_instance.stock_quantity < quantity:
-                raise serializers.ValidationError('Insufficient product quantity')
-            cart_item = CartItem.objects.filter(order=order, product=product_instance, quantity=quantity).last()
+                raise serializers.ValidationError(f'Insufficient stock quantity for product: {product_instance.name}')
+            
+            product_instance.stock_quantity -= quantity
+            product_instance.save()
+
+            cart_item = CartItem.objects.filter(order=order, product=product_instance).first()
             if cart_item:
                 cart_item.quantity += quantity
                 cart_item.save()
@@ -54,7 +58,7 @@ class OrderSerializer(serializers.ModelSerializer):
 
 
 class CartItemOutSerializer(serializers.ModelSerializer):
-    product = ProductSerializer()  # Nested serializer to include product details
+    product = ProductSerializer()
 
     class Meta:
         model = CartItem
@@ -62,11 +66,11 @@ class CartItemOutSerializer(serializers.ModelSerializer):
 
 
 class OrderOutSerializer(serializers.ModelSerializer):
-    products = CartItemSerializer(source='cartitem_set', many=True)  # Use the related manager for CartItem
+    products = CartItemOutSerializer(source='cartitem_set', many=True)
 
     class Meta:
         model = Order
-        fields = ['id', 'customer', 'products', 'total_price']  # Include relevant fields
+        fields = ['id', 'customer', 'products', 'total_price']
 
     def get_total_price(self, obj):
         return obj.total_price()

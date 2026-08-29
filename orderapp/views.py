@@ -22,43 +22,40 @@ class CreateCustomerView(APIView):
         serializer = CustomerInitSerializer(data=request.data)
         if serializer.is_valid():
             response = initialise_customer(serializer.validated_data)
-            if response['status'] == "success":
-                status = 201
-            else:
-                status = 400
-            return Response(response, status=status)
+            http_status = status.HTTP_201_CREATED if response.get('status') == "success" else status.HTTP_400_BAD_REQUEST
+            return Response(response, status=http_status)
         else:
-            return Response(serializer.errors, status=400)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class CustomerDetailView(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, request, customer_id):
-        response, status = view_customer(customer_id, only_view=True)
-        return Response(response, status=status)
+        response, http_status = view_customer(customer_id, only_view=True)
+        return Response(response, status=http_status)
 
     def put(self, request, customer_id):
-        response, status = view_customer(customer_id, request.data)
-        return Response(response, status=status)
+        response, http_status = view_customer(customer_id, request.data)
+        return Response(response, status=http_status)
 
     def delete(self, request, customer_id):
-        response, status = remove_customer(customer_id, request.data)
-        return Response(response, status=status)
+        response, http_status = remove_customer(customer_id)
+        return Response(response, status=http_status)
 
 
 class ProductCreateView(APIView):
     def post(self, request):
-        response, status = create_product(request.data)
-        return Response(response, status=status)
+        response, http_status = create_product(request.data)
+        return Response(response, status=http_status)
 
 
 class ProductDetailView(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, request, product_id):
-        response, status = get_product(product_id)
-        return Response(response, status=status)
+        response, http_status = get_product(product_id)
+        return Response(response, status=http_status)
 
 
 class OrderCreateView(APIView):
@@ -99,4 +96,4 @@ class OrderDetailView(APIView):
         return_data = {
             "order": serializer.data
         }
-        return Response(build_response('success', return_data), status=200)
+        return Response(build_response('success', return_data), status=status.HTTP_200_OK)
